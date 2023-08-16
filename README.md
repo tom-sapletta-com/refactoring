@@ -25,3 +25,19 @@ output_file = 'output.csv'  # Replace with the desired output CSV file name
 result = check_filenames(directory_to_search)
 write_to_csv(result, output_file)
 ````
+
+
+# file converter
+
+To execute this script as a shell command with input parameters, follow these steps:
+
+1. Save the script to a Python file (e.g., `json2yaml.py`).
+2. Make the file executable by running `chmod +x json2yaml.py`.
+3. Run the command with the desired input parameters like:
+
+```bash
+./json2yaml.py input.json output.yaml
+```
+
+Replace `input.json` with the path to your JSON file and `output.yaml` with the desired output YAML file path.
+
