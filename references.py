@@ -10,9 +10,10 @@ def check_filenames(directory):
     for root, _, files in os.walk(directory):
         for file in files:
             filename = os.path.join(root, file)
-            with open(filename, 'r') as f:
+            with open(filename, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
-                if file in content:
+                if file in content:  
+                    print(file + 'added')
                     result.append(filename)
     return result
 
