@@ -7,14 +7,18 @@ import argparse
 
 def check_filenames(directory):
     result = []
-    for root, _, files in os.walk(directory):
+    for root, dirs, files in os.walk(directory):
+        # Exclude hidden directories
+        dirs[:] = [d for d in dirs if not d.startswith('.')]
         for file in files:
-            filename = os.path.join(root, file)
-            with open(filename, 'r', encoding='utf-8', errors='ignore') as f:
-                content = f.read()
-                if file in content:  
-                    print(file + 'added')
-                    result.append(filename)
+            # Exclude hidden files
+            if not file.startswith('.'):
+                filename = os.path.join(root, file)
+                with open(filename, 'r', encoding='utf-8', errors='ignore') as f:
+                    content = f.read()
+                    if file in content:  
+                        print(file + 'added')
+                        result.append(filename)
     return result
 
 def write_to_csv(data, output_file):
